@@ -15,6 +15,12 @@ const sequelize = new Sequelize(
       min: config.pool.min,
       acquire: config.pool.acquire,
       idle: config.pool.idle
+    },
+    define: {
+      // sequelize.define("테이블이름", { ... }); -> 에서 sequilize가 기본적으로 테이블이름을 복수형으로 만들어 query를 날리는데 이 설정으로 해결할 수 있다.
+      freezeTableName: true,
+      // createAt, updateAt 설정
+      timestamps: false,
     }
   }
 );
